@@ -11,6 +11,9 @@ import in.bushansirgur.onlinebookstore.entity.Book;
 
 public interface BookRepository extends JpaRepository<Book, Long>{
 	
+	/*
+	 * list of books by category
+	 * */
 	@RestResource(path = "categoryid")
 	Page<Book> findByCategoryId(@Param("id") Long id, Pageable pageable);
 }
