@@ -24,6 +24,9 @@
           </div>
         </div>
       </div>
+      <div *ngIf="books?.length == 0" class="col-md-12 alert alert-warning mt-1">
+        No books found
+      </div>
     </div>
 
   </div>
