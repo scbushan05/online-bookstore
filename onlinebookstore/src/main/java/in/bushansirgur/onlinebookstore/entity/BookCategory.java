@@ -33,4 +33,5 @@ public class BookCategory {
 	private Set<Book> book;
 	
 	//Add setters and getters if you are not using lombok
+	
 }

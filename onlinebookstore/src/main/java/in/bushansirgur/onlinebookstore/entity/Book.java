@@ -55,4 +55,5 @@ public class Book {
 	private BookCategory category;
 	
 	//setters and getters if you are not using lombok
+	
 }
