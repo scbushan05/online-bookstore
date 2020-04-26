@@ -20,8 +20,11 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "@fortawesome/fontawesome-free": "^5.12.1",
+    "@ng-bootstrap/ng-bootstrap": "~5.2.2",
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
+    "jw-angular-pagination": "^1.1.0",
+    "ngx-pagination": "^5.0.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

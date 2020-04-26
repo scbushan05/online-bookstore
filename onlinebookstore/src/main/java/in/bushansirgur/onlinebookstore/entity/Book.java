@@ -53,6 +53,7 @@ public class Book {
 	@ManyToOne
 	@JoinColumn(name="category_id", nullable=false)
 	private BookCategory category;
+
 	
 	//setters and getters if you are not using lombok
 	

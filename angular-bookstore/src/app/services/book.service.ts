@@ -20,15 +20,21 @@ export class BookService {
     return this.getBooksList(searchUrl);
   }
 
+  getBooksPaginate(theCategoryId: number, currentPage: number, pageSize: number): Observable<GetResponseBooks>{
+    const searchUrl = `${this.baseUrl}/search/categoryid?id=${theCategoryId}&page=${currentPage}&size=${pageSize}`;
+    return this.httpClient.get<GetResponseBooks>(searchUrl);
+  }
+
   getBookCategories(): Observable<BookCategory[]>{
     return this.httpClient.get<GetResponseBookCategory>(this.categoryUrl).pipe(
       map(response => response._embedded.bookCateogry)
     );
   }
 
-  searchBooks(keyword: string): Observable<Book[]>{
-    const searchUrl = `${this.baseUrl}/search/searchbykeyword?name=${keyword}`;
-    return this.getBooksList(searchUrl);
+  searchBooks(keyword: string, currentPage: number, pageSize: number): Observable<GetResponseBooks>{
+    const searchUrl = `${this.baseUrl}/search/searchbykeyword?name=${keyword}&page=${currentPage}&size=${pageSize}`;
+    //return this.getBooksList(searchUrl);
+    return this.httpClient.get<GetResponseBooks>(searchUrl);
   }
 
   private getBooksList(searchUrl: string): Observable<Book[]> {
@@ -46,6 +52,16 @@ export class BookService {
 interface GetResponseBooks{
   _embedded: {
     books: Book[];
+  },
+  page: {
+    //cureent page
+    size: number,
+    //total number of records in database
+    totalElements: number,
+    //total number of pages, starts from 0 index
+    totalPages: number,
+    //current page
+    number: number
   }
 }
 

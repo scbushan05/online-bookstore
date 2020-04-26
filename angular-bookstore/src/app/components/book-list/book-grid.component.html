@@ -7,6 +7,8 @@
   <div class="col-lg-9">
 
     <div class="row">
+      <!-- client side paging -->
+      <!-- <div class="col-lg-4 col-md-6 mb-4" *ngFor="let book of pageOfItems"> -->
       <div class="col-lg-4 col-md-6 mb-4" *ngFor="let book of books">
         <div class="card h-100">
           <a routerLink="/books/{{book.id}}">
@@ -28,7 +30,49 @@
         No books found
       </div>
     </div>
+    <div class="row">
 
+      <!-- page size drop down selection -->
+      <div class="col-md-6">
+
+        <div class="row">
+          <div class="col-md-3">
+            <span>Page Size: </span>
+          </div>
+          <div class="col-md-9">
+            <select (change)="updatePageSize($event.target.value)"
+                    class="form-control-sm">
+              <option>5</option>
+              <option>10</option>
+              <option>20</option>
+              <option>50</option>
+            </select>
+          </div>
+        </div>
+       
+      </div>
+
+      <!-- pagination component -->
+      <div class="col-md-6">
+        
+        <!-- client side paging -->
+        <!-- <jw-pagination [items]="books" (changePage)="onChangePage($event)"></jw-pagination> -->
+
+        <ngb-pagination [(page)]="currentPage"
+                        [pageSize]="pageSize" 
+                        [collectionSize]="totalRecords"
+                        (pageChange)="listBooks()"
+                        class="d-flex justify-content-end">
+            <ng-template ngbPaginationFirst>First</ng-template>
+            <ng-template ngbPaginationLast>Last</ng-template> 
+            <ng-template ngbPaginationPrevious>Prev</ng-template>
+            <ng-template ngbPaginationNext>Next</ng-template> 
+                        
+        </ngb-pagination>
+      </div>
+
+    </div>
   </div>
 </div>
+
 
