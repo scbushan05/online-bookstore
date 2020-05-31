@@ -17,7 +17,6 @@ export class CartService {
     //check already item in the cart 
     let alreadyExistsInCart: boolean = false;
     let existingCartItem: CartItem = undefined;
-
     
     if(this.cartItems.length > 0){
       //find the item in the cart based on id
@@ -50,8 +49,29 @@ export class CartService {
 
     console.log(`Total price: ${totalPriceValue}, Total quantity: ${totalQuantityValue}`);
     
-
     this.totalPrice.next(totalPriceValue);
     this.totalQuantity.next(totalQuantityValue);
+  }
+
+  decrementQuantity(cartItem: CartItem){
+    cartItem.quantity--;
+
+    if (cartItem.quantity === 0) {
+      this.remove(cartItem);
+    }else {
+      this.calculateTotalPrice();
+    }
+  }
+
+  remove(cartItem: CartItem){
+    const itemIndex = this.cartItems
+                          .findIndex(
+                            tempCartItem => tempCartItem.id === cartItem.id
+                          );
+
+    if (itemIndex > -1) {
+      this.cartItems.splice(itemIndex, 1);
+      this.calculateTotalPrice();
+    }
   }
 }

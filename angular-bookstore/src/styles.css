@@ -33,7 +33,7 @@ body, html{
     padding-bottom: 100px;
 }
 
-a{
+a, .pointer{
     cursor: pointer;
 }
 
