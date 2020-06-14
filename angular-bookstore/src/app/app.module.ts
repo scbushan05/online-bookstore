@@ -13,11 +13,14 @@ import { SearchComponent } from './components/search/search.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ReactiveFormsModule } from '@angular/forms';
 //client side paging
 //import { JwPaginationComponent } from 'jw-angular-pagination';
 
 
 const routes: Routes = [
+  {path: 'checkout', component: CheckoutComponent},
   {path: 'cart-details', component: CartDetailsComponent},
   {path: 'books/:id', component: BookDetailsComponent},
   {path: 'books', component: BookListComponent},
@@ -36,7 +39,8 @@ const routes: Routes = [
     SearchComponent,
     BookDetailsComponent,
     CartStatusComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    CheckoutComponent
     //client side paging
     //JwPaginationComponent
   ],
@@ -44,6 +48,7 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     NgbModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
